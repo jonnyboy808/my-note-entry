@@ -1,5 +1,5 @@
 const api = require('express').Router();
-const { readFromFile, readAndAppend, readFilterAppend, readFilterAndAppend } = require('../helpers/fsUtils');
+const { readFromFile, readAndAppend, readFilterAppend } = require('../helpers/fsUtils');
 
 
 const uuid = () => {
@@ -7,8 +7,6 @@ const uuid = () => {
       .toString(16)
       .substring(1);
   };
-
-// const { v4: uuidv4 } = require('uuid');
 
 api.get('/', (req, res) => {
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
@@ -26,15 +24,16 @@ api.post('/', (req, res) => {
         readAndAppend(newNote, './db/db.json');
         res.json('Note added. ');
     } else {
-        res.error('Error adding note. ');
+        res.error('Error adding new note. ');
     }
 });
 
 api.delete('/:id', (req, res) => {
     const { id } = req.params;
     if (id) {
-        readFilterAndAppend('./db/db.json', id);
+        readFilterAppend('./db/db.json', id);
         res.json('Notes deleted. ');
+    } else {
         res.error('Error deleting note. ');
     }
 });

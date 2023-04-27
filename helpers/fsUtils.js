@@ -3,36 +3,34 @@ const util = require('util');
 
 const readFromFile = util.promisify(fs.readFile);
 
-const writeToFile = (destination, content) =>
-fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
-err ? console.error(err) : console.info(`\n Data written to ${destination}`)
+const writeToFile = (req, res) =>
+fs.writeFile(req, JSON.stringify(res, null, 4), (err) =>
+err ? console.error(err) : console.info(`\n Data written to ${req}`)
 );
 
-const readAndAppend = (content, file) => {
-    fs.readFile(file, 'utf8', (err, data) => {
+const readAndAppend = (req, res) => {
+    fs.readFile(res, 'utf8', (err, data) => {
     if (err) {
         console.error(err);
     } else {
         const parsedData = JSON.parse(data);
-        parsedData.push(content);
-        writeToFile(file, parsedData);
+        parsedData.push(req);
+        writeToFile(res, parsedData);
     }
 });
 };
 
 
-
-
-const readFilterAndAppend = (file, identifier) => {
-    fs.readFile(file, 'utf8', (err, data) => {
+const readFilterAppend = (req, res) => {
+    fs.readFile(req, 'utf8', (err, data) => {
       if (err) {
         console.error(err);
       } else {
         const parsedData = JSON.parse(data);
-        const filteredData = parsedData.filter(obj => obj.id !== identifier);
-        writeToFile(file, filteredData);
+        const filteredData = parsedData.filter(obj => obj.id !== res);
+        writeToFile(req, filteredData);
       }
     });
   };
   
-  module.exports = { readFromFile, writeToFile, readAndAppend, readFilterAndAppend };
+  module.exports = { readFromFile, writeToFile, readAndAppend, readFilterAppend };
