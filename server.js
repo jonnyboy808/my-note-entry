@@ -1,13 +1,11 @@
 const express = require('express');
 const path = require('path');
-const { middle } = require('./public/assets/js/index.js');
-const api = require ('./db/db.json');
+const api = require ('./routes/index');
 
 const PORT = process.env.port || 3001;
 
 const app = express();
 
-app.use(middle);
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));

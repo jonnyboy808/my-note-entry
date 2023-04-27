@@ -1,7 +1,14 @@
 const api = require('express').Router();
 const { readFromFile, readAndAppend, readFilterAppend, readFilterAndAppend } = require('../helpers/fsUtils');
 
-const { v4: uuidv4 } = require('uuid');
+
+const uuid = () => {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  };
+
+// const { v4: uuidv4 } = require('uuid');
 
 api.get('/', (req, res) => {
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
@@ -13,7 +20,7 @@ api.post('/', (req, res) => {
         const newNote = {
             title,
             text,
-            id: uuidv4(),
+            id: uuid(),
         };
 
         readAndAppend(newNote, './db/db.json');
