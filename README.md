@@ -15,7 +15,7 @@
 
 
 ## Description
-An easy to use command line interface applications that creates a personal SVG logo based on just answering a few command line questions. The application is capable of creating a circle, square, or triangle shape with an option of up to three characters. Options include choosing the color of the shape and the text by either entering the color text or the hexadecimal color code.
+A quick and easy to use note taking app
 
 ## Installation
 Installation steps of this application would require forking this repo and cloning it to your local machine to run. After forking, open it with your preferred code application, or run it directly from your command line.
