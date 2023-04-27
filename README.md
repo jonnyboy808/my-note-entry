@@ -7,7 +7,7 @@
 * [Description](#description)
 * [Installation](#installation)
 * [Code Example](#code-example)
-* [Walkthrough](#walkthrough)
+* [Notes Landing Page](#notes-landing-page)
 * [Usage](#usage)
 * [License](#license)
 * [Questions](#questions)
@@ -15,10 +15,10 @@
 
 
 ## Description
-A quick and easy to use note taking app
+A quick and easy to use note taking app that allows you to add new notes with a spot to add descriptions of each note. Additionally you can also delete the note when it's no longer needed. The site opens the the homepage, and when ready just click to add a new note.
 
 ## Installation
-Installation steps of this application would require forking this repo and cloning it to your local machine to run. After forking, open it with your preferred code application, or run it directly from your command line.
+This app has no need for installation as it is live deployed to a site
 
 ## Code Example
 Below is an example of code that creates a new note, with the addition to the code the allows for notes to be deleted
@@ -38,7 +38,7 @@ api.post('/', (req, res) => {
         res.error('Error adding new note. ');
     }
 });
-
+// refers to the specific note id to delete
 api.delete('/:id', (req, res) => {
     const { id } = req.params;
     if (id) {
@@ -49,39 +49,15 @@ api.delete('/:id', (req, res) => {
     }
 });
 ```
-Additional example using regular expression to call in a hexadecimal color code.
-```JS
- // hexadecimal color entry, validates if entry matches that of hex RegEx
-    {
-        type: 'input',
-        name: 'shapeColor',
-        message: 'Enter a hexadecimal color for your shape, i.e.(#ffffff):',
-        when: (answers) => {
-            if(answers.shapeColorFormat === 'hexadecimal') {
-                return true;
-            }
-            return false;
-        },
-        validate: (answer) => {
-            const hexRegEx = '^#[A-Fa-f0-9]{6}$'
-            if (!answer.match(hexRegEx)) {
-                return console.log('\n Please enter a valid hexadecimal')
-            }
-            return true;
-        }
-    },
-```
 
-## Walkthrough 
-Bellow is a walkthrough clip
 
-![Gif walkthrough](./lib/images/walkthrough-clip.gif)
+## Notes Landing Page
+Bellow is a screenshot of the landing page
 
-For full video follow this link:
-[Walkthrough Video](https://drive.google.com/file/d/14UQJPJBKa2sD4RZ_sbFJNKHDpAinv7Ne/view)
+![Notes landing page](./assets/images/notes-page.png)
 
 ## Usage
-After cloning this repo to your local machine, open it with your preferred application or start directly from your command line. You will need to run the "node index.js" command to get started. Once initiated, the application will give a series of prompts with questions. Note that all questions must be answered for the application to work correctly. At the end of the prompts you will receive a message acknowledging that a new SVG logo has been generated.
+To use the notes site visit the deployed page link. When the site first opens you will be greeted with the note taker homepage and when ready click on the "Get Started" button which will take you to the note taking landing page. Next simply enter the title of the note and a description, when done click on the save icon in the top right of the screen. Your new note will be displayed in the column to the left of the page. Any additional note will be added to the list. When the note is no longer needed, simply click the garbage option to deleted the desired note. If for any reason you need to go back to the homepage, simply click "Note Taker" in the top left of the screen.
 
 
 

@@ -9,7 +9,7 @@ const readFromFile = util.promisify(fs.readFile);
 // If no error Data written to db.json will be logged to the console
 const writeToFile = (req, res) =>
 fs.writeFile(req, JSON.stringify(res, null, 4), (err) =>
-err ? console.error(err) : console.info(`\n Data written to ${req}`)
+err ? console.error(err) : console.info(`\n New data written to ${req}`)
 );
 
 // read the file and then appends it using the write to file function
