@@ -2,6 +2,15 @@
 
 ![https://img.shields.io/badge/license-MIT-green](https://img.shields.io/badge/license-MIT-green)
 
+## Links
+Deployed app:
+
+https://boiling-bayou-97610.herokuapp.com/
+
+Repo:
+
+https://github.com/jonnyboy808/my-note-entry
+
 ## Table of Contents
 
 * [Description](#description)
