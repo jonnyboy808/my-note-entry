@@ -4,7 +4,7 @@ const path = require('path');
 const api = require ('./routes/index');
 
 // creates an active port at 3001
-const PORT = process.env.port || 3001;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
